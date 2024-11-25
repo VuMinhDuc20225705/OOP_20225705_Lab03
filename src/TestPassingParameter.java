@@ -1,3 +1,4 @@
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
 public class TestPassingParameter {
 
@@ -7,17 +8,18 @@ public class TestPassingParameter {
 		DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinderella");
 		
 		swap(jungleDVD, cinderellaDVD);
-		System.out.println("Jungle dvd title: " + jungleDVD.getTitle());
-		System.out.println("cinderella dvd title: " + cinderellaDVD.getTitle());
+		System.out.println("jungle dvd title: "+ jungleDVD.getTitle());
+		System.out.println("cinderella dvd title: "+ cinderellaDVD.getTitle());
+		
 		changeTitle(jungleDVD, cinderellaDVD.getTitle());
-		System.out.println("Jungle dvd title: "+ jungleDVD.getTitle());
+		System.out.println("jungle dvd title: "+ jungleDVD.getTitle());
+		
 	}
-
-	public static void swap(DigitalVideoDisc d1, DigitalVideoDisc d2) {
-		// TODO Auto-generated method stub
-		DigitalVideoDisc tmp = d1;
-		d1 = d2;
-		d2 = tmp;
+	
+	public static void swap (Object o1, Object o2) {
+		Object tmp = o1;
+		o1 = o2;
+		o2 = tmp;
 	}
 	
 	public static void changeTitle(DigitalVideoDisc dvd, String title) {
