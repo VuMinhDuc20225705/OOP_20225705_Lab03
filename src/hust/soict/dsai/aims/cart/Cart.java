@@ -21,58 +21,33 @@ public class Cart {
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin", 
 				"Animation", 19.95f);
 		anOrder.addDigitalVideoDisc(dvd3);
+		//System.out.println(itemsOrdered.length);
 		invoice(itemsOrdered);
 	}
 	
 	public void addDigitalVideoDisc (DigitalVideoDisc dvd) {
-		int length = itemsOrdered.length;
-		DigitalVideoDisc[] newCart = new DigitalVideoDisc[length + 1];
-		for (int i = 0; i < itemsOrdered.length; i++) {
-			newCart[i] = itemsOrdered[i];
+		int length = 0;
+		//itemsOrdered[length] = dvd;
+		for (DigitalVideoDisc ptr : itemsOrdered) {
+			if (ptr != null) length++;
 		}
-		newCart[length] = dvd;
-		for (int i = 0; i < newCart.length; i++) {
-			itemsOrdered[i] = newCart[i];
-		}
-	}
-	
-	public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
-		int add_len = dvdList.length;
-		DigitalVideoDisc[] newCart = new DigitalVideoDisc[itemsOrdered.length + add_len];
-		for (int i = 0; i < itemsOrdered.length; i++) {
-			newCart[i] = itemsOrdered[i];
-		}
-		for (int i = itemsOrdered.length; i < newCart.length; i++) {
-			newCart[i + itemsOrdered.length] = dvdList[i];
-		}
-		for (int i = 0; i < newCart.length; i++) {
-			itemsOrdered[i] = newCart[i];
-		}
-	}
-	
-	public void addDigitalVideoDisc (DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-		DigitalVideoDisc[] newCart = new DigitalVideoDisc[itemsOrdered.length + 2];
-		for (int i = 0; i < itemsOrdered.length; i++) {
-			newCart[i] = itemsOrdered[i];
-		}
-		newCart[itemsOrdered.length] = dvd1;
-		newCart[itemsOrdered.length + 1] = dvd2;
-		for (int i = 0; i < newCart.length; i++) {
-			itemsOrdered[i] = newCart[i];
-		}
+		itemsOrdered[length] = dvd;
 	}
 	
 	public static void invoice(DigitalVideoDisc[] items) {
-		int num = items.length;
+		int length = 0;
+		for (DigitalVideoDisc ptr : itemsOrdered) {
+			if (ptr != null) length++;
+		}
 		float total = 0;
 		System.out.println("***********************CART***********************");
 		System.out.println("Ordered items");
 		
-		for (int i = 0; i < num; i++) {
+		for (int i = 0; i < length; i++) {
 			System.out.println((i+1) + " - " + items[i].getTitle() + " - " + items[i].getCategory() + " - " + items[i].getDirector() + " - " + items[i].getLength() + " - " + items[i].getCost() +"$");
 			total = total + items[i].getCost();
 		}
-		System.out.println("Total cost: " + total);
+		System.out.println("Total cost: " + total +"$");
 		System.out.println("*************************************************** ");
 		
 	}
